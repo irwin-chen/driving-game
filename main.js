@@ -1,6 +1,7 @@
 var turnCounter = 0;
 var $image = document.querySelector('img');
 var carOn = null;
+var carX = $image.offsetLeft;
 
 document.addEventListener('keydown', turnCar);
 
@@ -43,5 +44,6 @@ function changeDirection() {
 }
 
 function moveCar() {
-
+  carX += 10;
+  $image.setAttribute('style', 'left:' + carX + 'px');
 }
