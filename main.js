@@ -1,5 +1,7 @@
 var turnCounter = 0;
 var $image = document.querySelector('img');
+var carOn = null;
+var carX = $image.offsetLeft;
 
 document.addEventListener('keydown', turnCar);
 
@@ -10,6 +12,16 @@ function turnCar(event) {
     turnCounter--;
   } else if (event.key === 'ArrowDown') {
     turnCounter += 2;
+  } else if (event.key === ' ') {
+    if (!carOn) {
+      carOn = true;
+    } else {
+      carOn = false;
+    }
+  }
+
+  if (carOn) {
+    setInterval(moveCar, 16);
   }
 
   if (turnCounter > 3) {
@@ -19,7 +31,6 @@ function turnCar(event) {
 }
 
 function changeDirection() {
-
   if (turnCounter === 1) {
     $image.className = 'turn-1';
   } else if (turnCounter === 2) {
@@ -30,4 +41,9 @@ function changeDirection() {
   } else if (turnCounter === 0) {
     $image.className = 'turn-0';
   }
+}
+
+function moveCar() {
+  carX += 10;
+  $image.setAttribute('style', 'left:' + carX + 'px');
 }

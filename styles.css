@@ -4,6 +4,7 @@
 
 img {
   width: 10%;
+  position: absolute;
 }
 
 .turn-1 {
