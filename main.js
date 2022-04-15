@@ -1,5 +1,6 @@
 var turnCounter = 0;
 var $image = document.querySelector('img');
+var carOn = null;
 
 document.addEventListener('keydown', turnCar);
 
@@ -10,6 +11,12 @@ function turnCar(event) {
     turnCounter--;
   } else if (event.key === 'ArrowDown') {
     turnCounter += 2;
+  } else if (event.key === ' ') {
+    if (!carOn) {
+      carOn = true;
+    } else {
+      carOn = false;
+    }
   }
 
   if (turnCounter > 3) {
